@@ -1,12 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View, WebView } from 'react-native';
+import { View, WebView } from 'react-native';
 import Header from './components/header/';
+import AlbumList from './components/AlbumList/';
 // import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 class App extends React.Component {
     // https://kmagiera.github.io/react-native-gesture-handler/docs/component-swipeable.html
     render() {
-        return <Header title="Albums" />;
+        return (
+            <View>
+                <Header title="Albums" />
+                <AlbumList />
+            </View>
+        );
 
         // return (
         //     <Swipeable
