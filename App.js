@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, WebView } from 'react-native';
+import { View, WebView, RefreshControl } from 'react-native';
 import Header from './components/header/';
 import AlbumList from './components/AlbumList/';
 // import Swipeable from 'react-native-gesture-handler/Swipeable';

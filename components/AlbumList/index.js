@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
 import { string } from 'prop-types';
+import axios from 'axios';
+
+import AlbumDetail from '../AlbumDetail';
 
 import { AlbumListContainer } from './style';
 
 const AlbumList = () => {
-    const [name, setName] = useState('Album list');
+    const [albums, setAlbums] = useState([]);
     useEffect(() => {
-        setTimeout(() => {
-            setName('Blah');
-            console.dir('BLAH');
-        }, 3000);
+        axios
+            .get('https://rallycoding.herokuapp.com/api/music_albums')
+            .then(result => {
+                console.log(result.data);
+                setAlbums(result.data);
+            });
     }, []);
 
     return (
         <AlbumListContainer>
-            <Text>{name}</Text>
+            {albums.map(album => (
+                <AlbumDetail album={album} key={album.title} />
+            ))}
         </AlbumListContainer>
     );
 };
