@@ -1,8 +1,9 @@
 import React from 'react';
 import { func, object, bool } from 'prop-types';
-import { Text, Image } from 'react-native';
+import { Text, Linking } from 'react-native';
 import Card from '../Card';
 import CardSection from '../CardSection';
+import Button from '../Button';
 import {
     defaultTheme,
     DataBlock,
@@ -12,22 +13,28 @@ import {
     Cover,
 } from './style';
 
-const AlbumDetail = ({ children, theme, album }) => (
-    <Card>
-        <CardSection>
-            <ArtistPhotoContainer>
-                <ArtistPhoto source={{ uri: album.thumbnail_image }} />
-            </ArtistPhotoContainer>
-            <DataBlock>
-                <Info>{album.title}</Info>
-                <Text>{album.artist}</Text>
-            </DataBlock>
-        </CardSection>
-        <CardSection>
-            <Cover source={{ uri: album.image }} />
-        </CardSection>
-    </Card>
-);
+const AlbumDetail = ({ children, theme, album }) => {
+    const { thumbnail_image, title, artist, image, url } = album;
+    return (
+        <Card>
+            <CardSection>
+                <ArtistPhotoContainer>
+                    <ArtistPhoto source={{ uri: thumbnail_image }} />
+                </ArtistPhotoContainer>
+                <DataBlock>
+                    <Info>{title}</Info>
+                    <Text>{artist}</Text>
+                </DataBlock>
+            </CardSection>
+            <CardSection>
+                <Cover source={{ uri: image }} />
+            </CardSection>
+            <CardSection>
+                <Button onPress={() => Linking.openURL(url)}>Buy now</Button>
+            </CardSection>
+        </Card>
+    );
+};
 
 AlbumDetail.propTypes = {
     theme: object,

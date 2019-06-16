@@ -1,3 +1,3 @@
 import styled from 'styled-components';
 
-export const AlbumListContainer = styled.View``;
+export const AlbumListContainer = styled.ScrollView``;

@@ -8,7 +8,7 @@ class App extends React.Component {
     // https://kmagiera.github.io/react-native-gesture-handler/docs/component-swipeable.html
     render() {
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <Header title="Albums" />
                 <AlbumList />
             </View>

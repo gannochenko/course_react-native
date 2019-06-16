@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, object, bool, array } from 'prop-types';
+import { func, object, oneOfType, array } from 'prop-types';
 import { defaultTheme, CardSectionContainer } from './style';
 
 const CardSection = ({ children, theme }) => (
@@ -8,7 +8,7 @@ const CardSection = ({ children, theme }) => (
 
 CardSection.propTypes = {
     theme: object,
-    children: array,
+    children: oneOfType([object, array, func]),
 };
 
 CardSection.defaultProps = {

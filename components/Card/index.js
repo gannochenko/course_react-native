@@ -1,12 +1,12 @@
 import React from 'react';
-import { func, object, bool } from 'prop-types';
+import { object, oneOfType, array, func } from 'prop-types';
 import { defaultTheme, CardContainer } from './style';
 
 const Card = ({ children, theme }) => <CardContainer>{children}</CardContainer>;
 
 Card.propTypes = {
     theme: object,
-    children: object,
+    children: oneOfType([object, array, func]),
 };
 
 Card.defaultProps = {
