@@ -1,0 +1,11 @@
+{
+  "name": "course_react-native",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:awesome1888/course_react-native.git",
+  "author": "Sergei <gannochenko.sv@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
