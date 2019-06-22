@@ -1,12 +1,11 @@
 import React from 'react';
 import {func, object, array, oneOfType} from 'prop-types';
-import { Card, CardSection, Button } from '../common';
+import { Card, CardSection, Button, InputField } from '../common';
 import { Formik } from 'formik';
 
 import {
     defaultTheme,
     //LoginFormContainer,
-    Input,
 } from './style';
 
 const LoginForm = ({
@@ -20,17 +19,22 @@ const LoginForm = ({
         {props => (
             <Card>
                 <CardSection>
-                    <Input
+                    <InputField
+                        label="Email"
+                        placeholder="user@gmail.com"
                         onChangeText={props.handleChange('login')}
                         onBlur={props.handleBlur('login')}
                         value={props.values.login}
                     />
                 </CardSection>
                 <CardSection>
-                    <Input
+                    <InputField
+                        label="Password"
+                        placeholder="&bull;&bull;&bull;&bull;&bull;"
                         onChangeText={props.handleChange('password')}
                         onBlur={props.handleBlur('password')}
                         value={props.values.password}
+                        secureTextEntry
                     />
                 </CardSection>
                 <CardSection>
