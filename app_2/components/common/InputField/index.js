@@ -8,11 +8,11 @@ import {
 } from './style';
 
 const InputField = ({
+    children = null,
+    theme = defaultTheme,
     label,
     placeholder = '',
     secureTextEntry = false,
-    children = null,
-    theme = defaultTheme,
     onChangeText = () => {},
     onBlur = () => {},
     value,
