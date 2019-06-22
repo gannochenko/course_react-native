@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, object, bool, array, oneOfType } from 'prop-types';
+import { func, object, bool, array, oneOfType, string } from 'prop-types';
 import { defaultTheme, ButtonContainer, Text } from './style';
 
 const Button = ({ children, theme, onPress }) => (
@@ -10,13 +10,14 @@ const Button = ({ children, theme, onPress }) => (
 
 Button.propTypes = {
     theme: object,
-    children: oneOfType([func, object, array]),
+    children: oneOfType([func, object, array, string]),
     onPress: func.isRequired,
 };
 
 Button.defaultProps = {
     theme: defaultTheme,
     children: null,
+    onPress: () => {},
 };
 
 export { Button };
