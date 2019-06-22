@@ -7,12 +7,13 @@ import firebase from 'firebase';
 import {
     defaultTheme,
     Error,
-    //LoginFormContainer,
+    LoginFormContainer,
 } from './style';
 
 const LoginForm = ({
-   children = defaultTheme,
-   theme = null,
+    children = defaultTheme,
+    theme = null,
+    loggedIn,
 }) => {
     const [ error, setError ] = useState('');
     const [ loading, setLoading ] = useState(false);
@@ -28,26 +29,46 @@ const LoginForm = ({
 
         try {
             const signInResult = await auth.signInWithEmailAndPassword(email, password);
-            console.log(signInResult);
+            // console.log(signInResult);
             resetForm({});
         } catch(signInError) {
-            console.log(signInError);
+            // console.log(signInError);
             needSignUp = true;
         }
 
         if (needSignUp) {
             try {
                 const signUpResult = await auth.createUserWithEmailAndPassword(email, password);
-                console.log(signUpResult);
+                // console.log(signUpResult);
                 resetForm({});
             } catch (signUpError) {
-                console.log(signUpError);
+                // console.log(signUpError);
                 setError('Authentication failed');
             }
         }
 
         setLoading(false);
     };
+
+    if (loggedIn === null) {
+        return (
+            <Card>
+                <CardSection>
+                    <Spinner />
+                </CardSection>
+            </Card>
+        );
+    }
+
+    if (loggedIn) {
+        return (
+            <Card>
+                <CardSection>
+                    <Button onPress={() => firebase.auth().signOut()}>Log out</Button>
+                </CardSection>
+            </Card>
+        );
+    }
 
     return (
        <Formik

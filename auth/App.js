@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Header } from './components/common';
 import firebase from 'firebase';
@@ -18,13 +18,20 @@ const App = () => {
         });
     }, []);
 
+    const [ loggedIn, setLoggedIn ] = useState(null);
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+            setLoggedIn(!!user);
+        });
+    }, []);
+
     return (
         <View>
             <Header />
-            <LoginForm />
+            <LoginForm loggedIn={loggedIn} />
         </View>
     );
 };
 
 export default App;
-
